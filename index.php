@@ -58,12 +58,10 @@
             </div>
         </div>
         
-
-
         <section class="cta-cards">
             <div class="cta-card">
                 <h2 class="card-title">Stay in the loop</h2>
-                <p class="card-text">Get a run down of what's on this week at Gateway</p>
+                <p class="card-text">Get a run down of what's on this week at Gateway.</p>
                 <a href="#" class="card-btn">This Week</a>
             </div>
             <div class="cta-card">
@@ -75,6 +73,11 @@
                 <h2 class="card-title">Reach out</h2>
                 <p class="card-text">We'd be honoured to get to know you. Send us a message today.</p>
                 <a href="#" class="card-btn">Connect</a>
+            </div>
+            <div class="cta-card">
+                <h2 class="card-title">Meet Us</h2>
+                <p class="card-text">We'd be honoured to get to know you. Send us a message today.</p>
+                <a href="#" class="card-btn">Directions</a>
             </div>
         </section>
 
@@ -133,12 +136,6 @@
             </div>
         </footer>
     </div>
-
-
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>

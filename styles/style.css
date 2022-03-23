@@ -98,6 +98,54 @@ a {
 
 }
 
+.cta-cards {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+    padding: 0 100px;
+    margin: 50px 0;
+    height: 100%;
+
+}
+
+.cta-card {
+    width: 350px;
+    height: 230px;
+    padding: 20px 30px;
+    display: flex;
+    flex-flow: column;
+    border-top: 4px solid rgb(221, 144, 0);
+    -webkit-box-shadow: 0px 8px 14px -8px #737373; 
+    box-shadow: 0px 8px 14px -8px #737373;
+}
+
+.cta-card:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+.card-title {
+    text-transform: uppercase;
+    margin: 5px 0;
+}
+
+.card-text {
+    font-size: 1.2rem;
+    flex-grow: 2;
+}
+
+.card-btn {
+    background-color: #000;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 150px;
+}
+
+.card-btn:hover {
+    background-color: rgb(221, 144, 0);
+}
 
 
 
