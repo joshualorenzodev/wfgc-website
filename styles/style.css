@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 100px;
+}
+
+#wfgc-logo {
+    max-width:100px;
+    height: auto;
+}
+
+.nav-bar {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.content-icon {
+    max-width: 100px;
+    height: auto;
+}
+
+.footer-icon {
+    max-width: 50px;
+    height: auto;
+}
+
+
