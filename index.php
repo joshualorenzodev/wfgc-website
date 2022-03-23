@@ -24,35 +24,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap" rel="stylesheet">
     
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="./styles/style.css">
 
     <title>Winnipeg Foursquare Gospel Church</title>
   </head>
   <body>
     <div class="container-fluid">
-        <header class="main-header">
-            <div class="logo">
-                <img src="./assets/logo_transparent.png" alt="Logo" id="wfgc-logo">
-            </div>
-            <nav class="main-nav">
-                <ul class="nav-bar">
-                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#ministries" class="nav-link">Ministries</a></li>
-                    <li class="nav-item"><a href="#sermon" class="nav-link">Sermon</a></li>
-                    <li class="nav-item"><a href="#give" class="nav-link">Give</a></li>
-                </ul>
-            </nav>
-        </header>
-
         <div class="hero">
-            <h1 class="hero-text">Jesus Christ is the same yesterday and today and forever.</h1>
-            <p class="tagline">Join us Sunday at 10:00am In-Person & Online</p>
-            <div class="hero-btns">
-                <a href="https://www.facebook.com/bethel.churchwinnipeg/" class="livestream-btn">Livestream</a>
-                <a href="https://www.youtube.com/channel/UCj19-mZHRsHR6l6Ncyl3elg" class="ytb-btn">YouTube</a>
+            <header class="main-header">
+                <div class="logo">
+                    <img src="./assets/logo_transparent.png" alt="Logo" id="wfgc-logo">
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-bar">
+                        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#ministries" class="nav-link">Ministries</a></li>
+                        <li class="nav-item"><a href="#sermon" class="nav-link">Sermon</a></li>
+                        <li class="nav-item"><a href="#give" class="nav-link">Give</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <div class="hero-content-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Jesus Christ is the same yesterday <br>and today and forever.</h1>
+                    <p class="hero-tagline">Join us Sunday at 10:00am In-Person & Online</p>
+                    <div class="hero-btns">
+                        <a href="https://www.facebook.com/bethel.churchwinnipeg/" class="hero-btn">Livestream</a>
+                        <a href="https://www.youtube.com/channel/UCj19-mZHRsHR6l6Ncyl3elg" class="hero-btn">YouTube</a>
+                    </div>
+                </div>
             </div>
         </div>
+        
+
 
         <section class="cta-cards">
             <div class="cta-card">
