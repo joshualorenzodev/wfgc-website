@@ -92,9 +92,13 @@ a {
     font-size: 1.5rem;
 }
 
+.hero-btn:hover {
+    border: solid 1px rgb(221, 144, 0);
+    color: rgb(221, 144, 0);
+}
+
 .hero a {
     color: #fff;
-
 }
 
 .cta-cards {
@@ -113,17 +117,18 @@ a {
     display: flex;
     flex-flow: column;
     border-top: 4px solid rgb(221, 144, 0);
-    -webkit-box-shadow: 0px 8px 14px -8px #737373; 
-    box-shadow: 0px 8px 14px -8px #737373;
 }
 
 .cta-card:hover {
+    -webkit-box-shadow: 0px 8px 14px -8px #737373; 
+    box-shadow: 0px 8px 14px -8px #737373;
     transform: scale(1.1);
-    transition: transform 0.3s;
+    transition: all 0.3s;
 }
 
 .card-title {
     text-transform: uppercase;
+    text-align: center;
     margin: 5px 0;
 }
 
@@ -139,6 +144,7 @@ a {
     text-align: center;
     padding: 10px;
     width: 150px;
+    margin: 0 auto;
 }
 
 .card-btn:hover {
@@ -211,6 +217,7 @@ a {
 .content-icon {
     max-width: 100px;
     height: auto;
+    margin: 20px 0;
 }
 
 .main-footer {
@@ -229,6 +236,16 @@ a {
     font-size: 2rem;
     margin-bottom: 5px;
 }
+
+.event {
+    color: rgb(255, 185, 56);
+}
+
+.time {
+    text-align: right;
+    margin: 0 auto;
+}
+
 .footer-icon {
     max-width: 50px;
     height: auto;

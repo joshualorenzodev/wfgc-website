@@ -5,46 +5,10 @@
 
 
 ?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/favicon/site.webmanifest">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap CSS -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="./styles/style.css">
-
-    <title>Winnipeg Foursquare Gospel Church</title>
-  </head>
-  <body>
+<?php include './src/inc/header.php'?>
     <div class="container-fluid">
         <div class="hero">
-            <header class="main-header">
-                <div class="logo">
-                    <img src="./assets/logo_transparent.png" alt="Logo" id="wfgc-logo">
-                </div>
-                <nav class="main-nav">
-                    <ul class="nav-bar">
-                        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="#ministries" class="nav-link">Ministries</a></li>
-                        <li class="nav-item"><a href="#sermon" class="nav-link">Sermon</a></li>
-                        <li class="nav-item"><a href="#give" class="nav-link">Give</a></li>
-                    </ul>
-                </nav>
-            </header>
+            <?php include './src/inc/header.php'?>
 
             <div class="hero-content-container">
                 <div class="hero-content">
@@ -101,7 +65,7 @@
                 <a href="#">
                     <img class="content-icon" src="./assets/watch.png" alt="Watch">
                     <h2 class="content-title">Watch</h2>
-                    <p class="content-text">Check out recent sermonds from WFGC</p>
+                    <p class="content-text">Check out recent sermons from WFGC</p>
                 </a>
             </div>
             <div class="content-card">
@@ -113,32 +77,8 @@
             </div>
         </section>
 
-        <footer class="main-footer">
-            <div class="footer-item">
-                <h4 class="footer-title">ADDRESS</h4>
-                <p>898 Henderson Hwy</p>
-                <p>Winnipeg, MB</p>
-                <p>R2K 3T4</p>
-                <a href="tel:12047970326"><p>204.898.9197</p></a>
-                <a href="mailto:winnipegfoursquare@gmail.com"><p>winnipegfoursquare@gmail.com</p></a>
+        <?php include './src/inc/footer.php'?>
 
-            </div>
-
-            <div class="footer-item">
-                <h4 class="footer-title">SCHEDULE</h4>
-                <p>Sunday School 10:00am - 10:30am</p>
-                <p>Prayer Worship 10:30am - 11:00am</p>
-                <p>Sunday Service 11:00am - 12:30pm</p>
-            </div>
-
-            <div class="footer-item">
-                <div class="socials">
-                    <a href="https://www.facebook.com/bethel.churchwinnipeg/"><img class="footer-icon" src="./assets/facebook.png" alt="Facebook"></a>
-                    <a href="https://www.youtube.com/channel/UCj19-mZHRsHR6l6Ncyl3elg/"><img class="footer-icon" src="./assets/youtube.png" alt="YouTube"></a>
-                    <a href="https://www.instagram.com/wfgc4/"><img class="footer-icon" src="./assets/instagram.png" alt="Instagram"></a>
-                </div>
-            </div>
-        </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
