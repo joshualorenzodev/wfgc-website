@@ -82,9 +82,11 @@
         </section>
 
         <section id="prayer">
-            <h2>Need a prayer?</h2>
-            <p>Life happens. In moments of difficulty or uncertainty prayer is a powerful response because we trust our situation to the creator of all things. We'd love to pray for you.</p>
-            <a href="#" class="prayer-btn">Ask for Prayer</a>
+            <div class="prayer-content">
+                <h2>Need a prayer?</h2>
+                <p>Life happens. In moments of difficulty or uncertainty prayer is a powerful response because we trust our situation to the creator of all things. We'd love to pray for you.</p>
+                <a href="#">Ask for Prayer</a>
+            </div>
         </section>
 
         <section class="cta-content">

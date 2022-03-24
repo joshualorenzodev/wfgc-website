@@ -147,10 +147,47 @@ a {
     background-color: rgb(221, 144, 0);
 }
 
+#prayer {
+    width: 100%;
+    height: 50vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../assets/praying.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat:no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
 
+.prayer-content {
+    width: 600px;
+    text-align: center;
+}
 
+.prayer-content h2 {
+    font-size: 4rem;
+}
 
+.prayer-content p {
+    font-size: 1.3rem;
+    line-height: 30px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
 
+.prayer-content a {
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+.prayer-content a:hover {
+    border: 1px solid rgb(221, 144, 0);
+    padding: 10px 20px;
+    color: rgb(221, 144, 0);
+}
 
 
 
