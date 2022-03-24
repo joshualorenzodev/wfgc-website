@@ -1,16 +1,15 @@
 <?php
-    define('DB_DSN','mysql:host=localhost;dbname=wfgc;charset=utf8');
+    define('DB_DSN','mysql:host=localhost;dbname=cms;charset=utf8');
     define('DB_USER','spideyfan_jjj');
     define('DB_PASS','thanoswasright');
-    // $db_name = 'wfgc';
     
     try {
         // Try creating new PDO connection to MySQL.
         $db = new PDO(DB_DSN, DB_USER, DB_PASS);
 
-        if ($db) {
-            echo "Connected to the database successfully!";
-        }
+        // if ($db) {
+        //     echo "Connected to the database successfully!";
+        // }
     } catch (PDOException $e) {
         print "Error: " . $e->getMessage();
         die();
