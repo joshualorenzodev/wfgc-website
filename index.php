@@ -94,22 +94,22 @@
                 <a href="#">
                     <img class="content-icon" src="./assets/mail.png" alt="Newsletter">
                     <h2 class="content-title">Weekly Email</h2>
+                    <p class="content-text">Subscribe to our weekly email newsletter</p>
                 </a>
-                <p class="content-text">Subscribe to our weekly email newsletter</p>
             </div>
             <div class="content-card">
                 <a href="#">
                     <img class="content-icon" src="./assets/watch.png" alt="Watch">
                     <h2 class="content-title">Watch</h2>
+                    <p class="content-text">Check out recent sermonds from WFGC</p>
                 </a>
-                <p class="content-text">Check out recent sermonds from WFGC</p>
             </div>
             <div class="content-card">
                 <a href="#">
                     <img class="content-icon" src="./assets/give.png" alt="Give">
                     <h2 class="content-title">Give</h2>
+                    <p class="content-text">Bring your tithes and offerings online</p>
                 </a>
-                <p class="content-text">Bring your tithes and offerings online</p>
             </div>
         </section>
 
@@ -117,9 +117,11 @@
             <div class="footer-item">
                 <h4 class="footer-title">ADDRESS</h4>
                 <p>898 Henderson Hwy</p>
-                <p>Winnipeg, Manitoba</p>
+                <p>Winnipeg, MB</p>
                 <p>R2K 3T4</p>
-                <p>204.898.9197</p>
+                <a href="tel:12047970326"><p>204.898.9197</p></a>
+                <a href="mailto:winnipegfoursquare@gmail.com"><p>winnipegfoursquare@gmail.com</p></a>
+
             </div>
 
             <div class="footer-item">
@@ -131,9 +133,9 @@
 
             <div class="footer-item">
                 <div class="socials">
-                    <img class="footer-icon" src="./assets/facebook.png" alt="Facebook">
-                    <img class="footer-icon" src="./assets/youtube.png" alt="YouTube">
-                    <img class="footer-icon" src="./assets/instagram.png" alt="Instagram">
+                    <a href="https://www.facebook.com/bethel.churchwinnipeg/"><img class="footer-icon" src="./assets/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.youtube.com/channel/UCj19-mZHRsHR6l6Ncyl3elg/"><img class="footer-icon" src="./assets/youtube.png" alt="YouTube"></a>
+                    <a href="https://www.instagram.com/wfgc4/"><img class="footer-icon" src="./assets/instagram.png" alt="Instagram"></a>
                 </div>
             </div>
         </footer>
