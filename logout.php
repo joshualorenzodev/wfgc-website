@@ -8,12 +8,15 @@
     $statement->bindValue(':id', $_SESSION['userid'] , PDO::PARAM_INT);
     $statement->execute();
 
-    $_SESSION['userid']    = null;
-    $_SESSION['username']   = null;
-    $_SESSION['fname']      = null;
-    $_SESSION['lname']      = null;
-    $_SESSION['role']       = null;
-    $_SESSION['status']     = null;
+    unset($_SESSION['userid']);
+    unset($_SESSION['username']);
+    unset($_SESSION['fname']);
+    unset($_SESSION['lname']);  
+    unset($_SESSION['role']);  
+    unset($_SESSION['status']);  
+    unset($_SESSION['successful_login']);
+
+    session_destroy();
 
     header("Location: ./index.php")
 ?>

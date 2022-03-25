@@ -1,9 +1,9 @@
 <?php
 
 
-
 ?>
 <?php include './src/inc/header.php'?>
+
     <div class="container-fluid">
         <div class="hero">
             <?php include './src/inc/nav.php'?>

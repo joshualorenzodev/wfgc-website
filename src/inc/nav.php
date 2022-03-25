@@ -1,13 +1,14 @@
 <?php
+    session_start();
+
     require ('./src/libs/connect.php');
 
-    if (isset($_SESSION['status']) && $_SESSION['status'] == 'online') {
-        $login_btn = "logout";
-    } else {
+    if (!isset($_SESSION['status'])) {
         $login_btn = "login";
+    } else {
+        $login_btn = "logout";
     }
-    ?>
-
+?>
 <header class="main-header">
     <div class="logo">
         <a href="index.php"><img src="./assets/logo_transparent.png" alt="Logo" id="wfgc-logo"></a>
