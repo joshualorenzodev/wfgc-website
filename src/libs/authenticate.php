@@ -72,7 +72,7 @@
 
         if($reg_password == $reg_password2) {
             $statement->execute();
-            $_SESSION['login_succesful'] = true;
+            $_SESSION['status'] = 'online';
             header("Location: ../../index.php");
 
         } else {

@@ -24,7 +24,7 @@ body {
 }
 
 #bootstrap-overrides {
-    background-color: #9e9e9e;
+    background-color: #ffffff;
 }
 
 .hero {
@@ -126,7 +126,7 @@ body {
 
 .cta-card {
     width: 350px;
-    height: 230px;
+    height: 250px;
     padding: 20px 30px;
     display: flex;
     flex-flow: column;
@@ -226,6 +226,10 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
+}
+
+.content-card a * {
+    color: #000;
 }
 
 .content-icon {

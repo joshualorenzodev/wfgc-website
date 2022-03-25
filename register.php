@@ -42,7 +42,7 @@
         </div>
         <div>
             <label for="agree">
-                <input type="checkbox" name="agree" id="agree" value="yes"/> I agree
+                <input type="checkbox" name="agree" id="agree" value="yes" required /> I agree
                 with the
                 <a href="#" title="term of services">term of services</a>
             </label>
