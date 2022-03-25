@@ -14,8 +14,16 @@
 </head>
 <body>
 <main>
-    <form action="register.php" method="post">
+    <form action="./src/libs/authenticate.php" method="post">
         <h1>Sign Up</h1>
+        <div>
+            <label for="fname">First name:</label>
+            <input type="text" name="fname" id="fname">
+        </div>
+        <div>
+            <label for="lname">Last name:</label>
+            <input type="text" name="lname" id="lname">
+        </div>
         <div>
             <label for="username">Username:</label>
             <input type="text" name="username" id="username">
@@ -29,7 +37,7 @@
             <input type="password" name="password" id="password">
         </div>
         <div>
-            <label for="password2">Password Again:</label>
+            <label for="password2">Retype password:</label>
             <input type="password" name="password2" id="password2">
         </div>
         <div>
@@ -39,7 +47,7 @@
                 <a href="#" title="term of services">term of services</a>
             </label>
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" name="register">Register</button>
         <footer>Already a member? <a href="login.php">Login here</a></footer>
     </form>
 </main>
