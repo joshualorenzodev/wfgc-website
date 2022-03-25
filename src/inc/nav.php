@@ -1,3 +1,13 @@
+<?php
+    require ('./src/libs/connect.php');
+
+    if (isset($_SESSION['status']) && $_SESSION['status'] == 'online') {
+        $login_btn = "logout";
+    } else {
+        $login_btn = "login";
+    }
+    ?>
+
 <header class="main-header">
     <div class="logo">
         <a href="index.php"><img src="./assets/logo_transparent.png" alt="Logo" id="wfgc-logo"></a>
@@ -8,7 +18,7 @@
             <li class="nav-item"><a href="#ministries" class="nav-link">Ministries</a></li>
             <li class="nav-item"><a href="blog.php" class="nav-link">Sermon</a></li>
             <li class="nav-item"><a href="#give" class="nav-link">Give</a></li>
-            <li class="nav-item"><a href="Login.php" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="<?=$login_btn?>.php" class="nav-link"><?=ucwords($login_btn)?></a></li>
         </ul>
     </nav>
 </header>
