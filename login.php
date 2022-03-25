@@ -23,7 +23,7 @@
         <h1>Login</h1>
         <div>
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" autofocus>
         </div>
         <div>
             <label for="password">Password:</label>

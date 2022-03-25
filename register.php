@@ -37,8 +37,8 @@
             <input type="password" name="password" id="password">
         </div>
         <div>
-            <label for="password2">Retype password:</label>
-            <input type="password" name="password2" id="password2">
+            <label for="password2" id="password2_lbl">Retype password:</label>
+            <input type="password" name="password2" id="password2" onchange="checkPass()">
         </div>
         <div>
             <label for="agree">
@@ -51,5 +51,6 @@
         <footer>Already a member? <a href="login.php">Login here</a></footer>
     </form>
 </main>
+<script src="script.js"></script>
 </body>
 </html>

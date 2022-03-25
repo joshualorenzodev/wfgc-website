@@ -72,12 +72,15 @@
 
         if($reg_password == $reg_password2) {
             $statement->execute();
+            $_SESSION['login_succesful'] = true;
+            header("Location: ../../index.php");
+
         } else {
             $_SESSION['pw_match'] = false;
             header("Location: ../../register.php");
         }
 
-        $row = $statement->fetch();
+        // $row = $statement->fetch();
 
         // $db_user_id     = $row['user_id'];
         // $db_username    = $row['username'];
