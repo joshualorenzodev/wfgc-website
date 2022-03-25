@@ -23,7 +23,13 @@
             <a href="https://www.instagram.com/wfgc4/"><img class="footer-icon" src="./assets/instagram.png" alt="Instagram"></a>
         </div>
     </div>
-</footer>
+    <div class="footer-item text-center">
+        <p>Copyright &copy; <a href="https://www.github.com/joshualorenzodev">Joshua Lorenzo</a><br>All Rights Reserved</p>
+        <a href="https://github.com/joshualorenzodev/wfgc-website">Source Code</a>
+        <br>
+        <span>&#128161;</span>
+    </div>
+    </footer>
 
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

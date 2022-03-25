@@ -2,7 +2,6 @@
     session_start();
     include_once('./src/libs/connect.php');
 
-
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
     $query     = "DELETE FROM `users` WHERE user_id = :id";
