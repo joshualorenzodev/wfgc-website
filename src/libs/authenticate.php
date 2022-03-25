@@ -16,17 +16,17 @@
 
         $db_user_id     = $row['user_id'];
         $db_username    = $row['username'];
-        $db_password    = $row['password'];
+        $db_password_hash = $row['password_hash'];
         $db_fname       = $row['fname'];
         $db_lname       = $row['lname'];
         $db_email       = $row['email'];
         $db_role        = $row['role'];
         $db_status      = $row['acc_status'];
         
-        if ($username !== $db_username && $password !== $db_password) {
+        if ($username !== $db_username && password_verify($password, $db_password_hash)) {
             $_SESSION['successful_login'] = false;
             header("Location: ../../login.php");
-        } else if($username == $db_username && $password == $db_password) {
+        } else if($username == $db_username && password_verify($password, $db_password_hash)) {
             
             $_SESSION['userid']    = $db_user_id;
             $_SESSION['username']   = $db_username;

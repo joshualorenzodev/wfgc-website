@@ -1,12 +1,13 @@
 <?php
-session_start();
+    session_start();
+    require ('./src/libs/connect.php');
 
-if (isset($_SESSION['role'])) {
-    if ($_SESSION['role'] != 'admin') {
-        header("Location: index.php");
+
+    if (isset($_SESSION['role'])) {
+        if ($_SESSION['role'] != 'admin') {
+            header("Location: index.php");
+        }
     }
-}
-
 
 ?>
 
