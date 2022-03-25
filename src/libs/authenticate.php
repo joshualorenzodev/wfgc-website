@@ -50,7 +50,7 @@
     }
 
     if(isset($_POST['register'])) {
-        $query = "INSERT INTO `users` (username, password, fname, lname, email, password_hash) VALUES (:username, :password, :fname, :lname, :email, :password_hash)";
+        $query = "INSERT INTO `users` (username, password, fname, lname, email, role, password_hash) VALUES (:username, :password, :fname, :lname, :email, :role, :password_hash)";
         $statement = $db->prepare($query);
         
         $reg_username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -59,6 +59,7 @@
         $reg_fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $reg_lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $reg_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $reg_role = 'user';
 
         $reg_password_hash = password_hash($reg_password, PASSWORD_BCRYPT);
 
@@ -67,11 +68,14 @@
         $statement->bindValue(':fname', $reg_fname, PDO::PARAM_STR);
         $statement->bindValue(':lname', $reg_lname, PDO::PARAM_STR);
         $statement->bindValue(':email', $reg_email, PDO::PARAM_STR);
+        $statement->bindValue(':role', $reg_role, PDO::PARAM_STR);
+
         $statement->bindValue(':password_hash', $reg_password_hash, PDO::PARAM_STR);
 
         if($reg_password == $reg_password2) {
             $statement->execute();
             $_SESSION['status'] = 'online';
+            $_SESSION['role'] = $reg_role;
             header("Location: ../../index.php");
 
         } else {

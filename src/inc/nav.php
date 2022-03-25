@@ -8,7 +8,7 @@
     } else if($_SESSION['role'] == 'user') {
         $login_btn = "logout";
     } else {
-        $login_btn = "aoifghauighaeu";
+        $login_btn = "logout";
     }
 ?>
 <header class="main-header">
