@@ -90,7 +90,7 @@
         $statement = $db->prepare($query);
         
         $reg_user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT);
-        $reg_fname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $reg_fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $reg_lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $reg_username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $reg_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -104,6 +104,7 @@
         $statement->bindValue(':user_role', $reg_role, PDO::PARAM_STR);
 
         $statement->execute();
+        
         header("Location: ../../admin.php");
         exit;
     }

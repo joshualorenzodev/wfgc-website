@@ -59,15 +59,18 @@
                         $_SESSION['tbl_role']       = $tbl_role;
                     ?>
                     <tr>
-                        <th scope="row"><?=$tbl_user_id?></th>
-                        <td><?=$tbl_fname?></td>
-                        <td><?=$tbl_lname?></td>
-                        <td><?=$tbl_username?></td>
-                        <td><?=$tbl_email?></td>
-                        <td><?=$tbl_role?></td>
-                        <td><?=$tbl_registratin_date?></td>
-                        <td><a href="edit_user.php" class="btn btn-success">Edit</a></td>
-                        <td><a href="delete_user.php" class="btn btn-danger">Delete</a</td>
+                        <form action="edit_user.php" method="post">
+                            <th scope="row"><?=$tbl_user_id?></th>
+                            <td><?=$tbl_fname?></td>
+                            <td><?=$tbl_lname?></td>
+                            <td><?=$tbl_username?></td>
+                            <td><?=$tbl_email?></td>
+                            <td><?=$tbl_role?></td>
+                            <td><?=$tbl_registratin_date?></td>
+                            <td><a href="edit_user.php?id=<?=$row['user_id']?>" class="btn btn-success">Edit</a></td>
+                            <!-- <td><button class="btn btn-danger" name="delete_user">Delete</a</td> -->
+                            <td><a href="delete_user.php" class="btn btn-danger">Delete</a</td>
+                        </form>
                     </tr>
                 <?php endwhile ?>
             </tbody>

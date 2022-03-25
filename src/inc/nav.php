@@ -3,12 +3,14 @@
 
     require_once ('./src/libs/connect.php');
 
-    if ($_SESSION['role'] == 'admin') {
+    if(!isset($_SESSION['role'])) {
+        $login_btn = "login";
+    } else if($_SESSION['role'] == 'admin') {
         $login_btn = "admin";
     } else if($_SESSION['role'] == 'user') {
         $login_btn = "logout";
     } else {
-        $login_btn = "logout";
+        $login_btn = "login";
     }
 ?>
 <header class="main-header">
