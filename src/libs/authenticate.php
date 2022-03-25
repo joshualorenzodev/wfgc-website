@@ -91,4 +91,60 @@
         // $db_role        = $row['role'];
         // $db_status      = $row['acc_status'];
     }
+
+    
+    if(isset($_POST['update'])) {
+        $query     = "UPDATE `users` SET fname = :fname, lname = :lname, username = :username, email = :email, `role` = :user_role WHERE user_id = :user_id";
+        $statement = $db->prepare($query);
+        
+        $reg_user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT);
+        $reg_fname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $reg_lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $reg_username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $reg_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $reg_role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        // $reg_fname = $_SESSION['fname'];
+        // $reg_lname = $_SESSION['lname'];
+        // $reg_username = $_SESSION['username'];
+        // $reg_email = $_SESSION['email'];
+        // $reg_role = $_SESSION['role'];
+
+        $statement->bindValue(':user_id', $reg_user_id, PDO::PARAM_STR);
+        $statement->bindValue(':fname', $reg_fname, PDO::PARAM_STR);
+        $statement->bindValue(':lname', $reg_lname, PDO::PARAM_STR);
+        $statement->bindValue(':username', $reg_username, PDO::PARAM_STR);
+        $statement->bindValue(':email', $reg_email, PDO::PARAM_STR);
+        $statement->bindValue(':user_role', $reg_role, PDO::PARAM_STR);
+
+        $statement->execute();
+        header("Location: ../../admin.php");
+        exit;
+    }
+
+    if(isset($_POST['add_user'])) {
+        $query = "INSERT INTO `users` (username, password, fname, lname, email, role, password_hash) VALUES (:username, :password, :fname, :lname, :email, :role, :password_hash)";
+        $statement = $db->prepare($query);
+        
+        $reg_fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $reg_lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $reg_username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $reg_password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $reg_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $reg_role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_EMAIL);
+        $reg_role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_EMAIL);
+
+        $reg_password_hash = password_hash($reg_password, PASSWORD_BCRYPT);
+
+        $statement->bindValue(':username', $reg_username, PDO::PARAM_STR);
+        $statement->bindValue(':password', $reg_password, PDO::PARAM_STR);
+        $statement->bindValue(':fname', $reg_fname, PDO::PARAM_STR);
+        $statement->bindValue(':lname', $reg_lname, PDO::PARAM_STR);
+        $statement->bindValue(':email', $reg_email, PDO::PARAM_STR);
+        $statement->bindValue(':role', $reg_role, PDO::PARAM_STR);
+        $statement->bindValue(':password_hash', $reg_password_hash, PDO::PARAM_STR);
+
+
+        $statement->execute();
+        header("Location: ../../admin.php");
+    }
 ?>

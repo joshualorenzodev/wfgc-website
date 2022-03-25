@@ -35,8 +35,9 @@
 
     <h1>Welcome to admin, <?=$_SESSION['fname']?></h1>
 
-    <a href="logout.php"><button>Logout</button></a>
-    <a href="index.php"><button>Home</button></a>
+    <a href="logout.php"><button class="btn btn-warning">Logout</button></a>
+    <a href="index.php"><button class="btn btn-info">Home</button></a>
+    <a href="add_user.php"><button class="btn btn-primary">Add User</button></a>
 
     <div class="table-responsive">
         <table class="table table-striped table-hover align-middle ">
@@ -54,43 +55,33 @@
             <tbody>
                 <?php while($row = $statement->fetch()): ?>
                     <?php
-                        $tbl_userid = $row['user_id'];
+                        $tbl_user_id = $row['user_id'];
                         $tbl_fname = $row['fname'];
                         $tbl_lname = $row['lname'];
                         $tbl_username = $row['username'];
                         $tbl_email = $row['email'];
+                        $tbl_role = $row['role'];
                         $tbl_registratin_date = $row['registration_date'];
+
+                        $_SESSION['user_id']    = $tbl_user_id;
+                        $_SESSION['fname']      = $tbl_fname;
+                        $_SESSION['lname']      = $tbl_lname;
+                        $_SESSION['username']   = $tbl_username;
+                        $_SESSION['email']   = $tbl_email;
+                        $_SESSION['role']       = $tbl_role;
                     ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td><?=$tbl_userid?></td>
+                        <th scope="row"><?=$tbl_user_id?></th>
                         <td><?=$tbl_fname?></td>
                         <td><?=$tbl_lname?></td>
                         <td><?=$tbl_username?></td>
                         <td><?=$tbl_email?></td>
+                        <td><?=$tbl_role?></td>
                         <td><?=$tbl_registratin_date?></td>
+                        <td><a href="edit_user.php" class="btn btn-success">Edit</a></td>
+                        <td><a href="delete_user.php" class="btn btn-danger">Delete</a</td>
                     </tr>
                 <?php endwhile ?>
-
-
-                <!-- <tr>
-                    <th scope="row">2</th>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>jdoe</td>
-                    <td>jdeo@gmail.com</td>
-                    <td>user</td>
-                    <td>2022-03-24</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>jdoe</td>
-                    <td>jdeo@gmail.com</td>
-                    <td>user</td>
-                    <td>2022-03-24</td>
-                </tr> -->
             </tbody>
         </table>
     </div>
