@@ -63,11 +63,11 @@
 
         $reg_password_hash = password_hash($reg_password, PASSWORD_BCRYPT);
 
-        $statement->bindValue(':username', $reg_username, PDO::PARAM_STR);
+        $statement->bindValue(':username', strtolower($reg_username), PDO::PARAM_STR);
         $statement->bindValue(':password', $reg_password, PDO::PARAM_STR);
-        $statement->bindValue(':fname', $reg_fname, PDO::PARAM_STR);
-        $statement->bindValue(':lname', $reg_lname, PDO::PARAM_STR);
-        $statement->bindValue(':email', $reg_email, PDO::PARAM_STR);
+        $statement->bindValue(':fname', ucwords($reg_fname), PDO::PARAM_STR);
+        $statement->bindValue(':lname', ucwords($reg_lname), PDO::PARAM_STR);
+        $statement->bindValue(':email', strtolower($reg_email), PDO::PARAM_STR);
         $statement->bindValue(':role', $reg_role, PDO::PARAM_STR);
 
         $statement->bindValue(':password_hash', $reg_password_hash, PDO::PARAM_STR);
@@ -122,11 +122,11 @@
 
         $reg_password_hash = password_hash($reg_password, PASSWORD_BCRYPT);
 
-        $statement->bindValue(':username', $reg_username, PDO::PARAM_STR);
+        $statement->bindValue(':username', strtolower($reg_username), PDO::PARAM_STR);
         $statement->bindValue(':password', $reg_password, PDO::PARAM_STR);
-        $statement->bindValue(':fname', $reg_fname, PDO::PARAM_STR);
-        $statement->bindValue(':lname', $reg_lname, PDO::PARAM_STR);
-        $statement->bindValue(':email', $reg_email, PDO::PARAM_STR);
+        $statement->bindValue(':fname', ucwords($reg_fname), PDO::PARAM_STR);
+        $statement->bindValue(':lname', ucwords($reg_lname), PDO::PARAM_STR);
+        $statement->bindValue(':email', strtolower($reg_email), PDO::PARAM_STR);
         $statement->bindValue(':role', $reg_role, PDO::PARAM_STR);
         $statement->bindValue(':password_hash', $reg_password_hash, PDO::PARAM_STR);
 
