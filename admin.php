@@ -52,16 +52,28 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>jdoe</td>
-                    <td>jdeo@gmail.com</td>
-                    <td>user</td>
-                    <td>2022-03-24</td>
-                </tr>
-                <tr>
+                <?php while($row = $statement->fetch()): ?>
+                    <?php
+                        $tbl_userid = $row['user_id'];
+                        $tbl_fname = $row['fname'];
+                        $tbl_lname = $row['lname'];
+                        $tbl_username = $row['username'];
+                        $tbl_email = $row['email'];
+                        $tbl_registratin_date = $row['registration_date'];
+                    ?>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><?=$tbl_userid?></td>
+                        <td><?=$tbl_fname?></td>
+                        <td><?=$tbl_lname?></td>
+                        <td><?=$tbl_username?></td>
+                        <td><?=$tbl_email?></td>
+                        <td><?=$tbl_registratin_date?></td>
+                    </tr>
+                <?php endwhile ?>
+
+
+                <!-- <tr>
                     <th scope="row">2</th>
                     <td>John</td>
                     <td>Doe</td>
@@ -78,7 +90,7 @@
                     <td>jdeo@gmail.com</td>
                     <td>user</td>
                     <td>2022-03-24</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>
