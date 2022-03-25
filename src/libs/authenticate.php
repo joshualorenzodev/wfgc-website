@@ -79,17 +79,6 @@
             $_SESSION['pw_match'] = false;
             header("Location: ../../register.php");
         }
-
-        // $row = $statement->fetch();
-
-        // $db_user_id     = $row['user_id'];
-        // $db_username    = $row['username'];
-        // $db_password    = $row['password'];
-        // $db_fname       = $row['fname'];
-        // $db_lname       = $row['lname'];
-        // $db_email       = $row['email'];
-        // $db_role        = $row['role'];
-        // $db_status      = $row['acc_status'];
     }
 
     
@@ -103,11 +92,6 @@
         $reg_username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $reg_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $reg_role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        // $reg_fname = $_SESSION['fname'];
-        // $reg_lname = $_SESSION['lname'];
-        // $reg_username = $_SESSION['username'];
-        // $reg_email = $_SESSION['email'];
-        // $reg_role = $_SESSION['role'];
 
         $statement->bindValue(':user_id', $reg_user_id, PDO::PARAM_STR);
         $statement->bindValue(':fname', $reg_fname, PDO::PARAM_STR);
@@ -142,7 +126,6 @@
         $statement->bindValue(':email', $reg_email, PDO::PARAM_STR);
         $statement->bindValue(':role', $reg_role, PDO::PARAM_STR);
         $statement->bindValue(':password_hash', $reg_password_hash, PDO::PARAM_STR);
-
 
         $statement->execute();
         header("Location: ../../admin.php");

@@ -7,8 +7,7 @@
             header("Location: index.php");
         }
     }
-
-        // SQL is written as a String.
+    // SQL is written as a String.
     $query = "SELECT * FROM `users` ORDER BY `registration_date`";
 
     // A PDO::Statement is prepared from the query.
@@ -19,20 +18,9 @@
 
 ?>
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head> -->
-
 <?php include ('./src/inc/header.php') ?>
 
 <body>
-
     <h1>Welcome to admin, <?=$_SESSION['fname']?></h1>
 
     <a href="logout.php"><button class="btn btn-warning">Logout</button></a>
@@ -44,8 +32,8 @@
             <thead>
                 <tr>
                     <th scope="col">User ID</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>

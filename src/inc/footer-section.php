@@ -1,7 +1,7 @@
 
 <footer class="main-footer">
     <div class="footer-item">
-        <h4 class="footer-title">ADDRESS</h4>
+        <h4 class="footer-title">CONTACT</h4>
         <a href="https://www.google.com/maps/place/898+Henderson+Hwy,+Winnipeg,+MB+R2K+3T4/@49.9327396,-97.1020901,17z/data=!3m1!4b1!4m5!3m4!1s0x52ea7051826fd54d:0xc8be4e8781a71579!8m2!3d49.9327362!4d-97.0999014" target="_blank"><p>898 Henderson Hwy</p></a>
         <p>Winnipeg, MB</p>
         <p>R2K 3T4</p>

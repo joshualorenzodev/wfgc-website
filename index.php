@@ -10,11 +10,11 @@
 
             <div class="hero-content-container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Jesus Christ is the same yesterday <br>and today and forever.</h1>
+                    <h1 class="hero-title">Jesus Christ is the same yesterday <br>and today and forever</h1>
                     <p class="hero-tagline">Join us Sunday at 10:00am In-Person & Online</p>
                     <div class="hero-btns">
-                        <a href="https://www.facebook.com/bethel.churchwinnipeg/" class="hero-btn">Livestream</a>
-                        <a href="https://www.youtube.com/channel/UCj19-mZHRsHR6l6Ncyl3elg" class="hero-btn">YouTube</a>
+                        <a href="https://www.google.com/maps/place/898+Henderson+Hwy,+Winnipeg,+MB+R2K+3T4/@49.9327396,-97.1020901,17z/data=!3m1!4b1!4m5!3m4!1s0x52ea7051826fd54d:0xc8be4e8781a71579!8m2!3d49.9327362!4d-97.0999014" class="hero-btn" target="_blank">Directions</a>
+                        <a href="https://www.facebook.com/bethel.churchwinnipeg/" class="hero-btn" target="_blank">Livestream</a>
                     </div>
                 </div>
             </div>
