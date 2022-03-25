@@ -20,9 +20,6 @@
     <form action="./src/libs/authenticate.php" method="post">
         <h1>Add User</h1>
         <div>
-            <input type="text" name="user_id" id="user_id" value="<?=$_SESSION['user_id']?>" hidden>
-        </div>
-        <div>
             <label for="fname">First name:</label>
             <input type="text" name="fname" id="fname">
         </div>

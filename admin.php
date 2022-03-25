@@ -51,12 +51,12 @@
                         $tbl_role = $row['role'];
                         $tbl_registratin_date = $row['registration_date'];
 
-                        $_SESSION['user_id']    = $tbl_user_id;
-                        $_SESSION['fname']      = $tbl_fname;
-                        $_SESSION['lname']      = $tbl_lname;
-                        $_SESSION['username']   = $tbl_username;
-                        $_SESSION['email']   = $tbl_email;
-                        $_SESSION['role']       = $tbl_role;
+                        $_SESSION['tbl_user_id']    = $tbl_user_id;
+                        $_SESSION['tbl_fname']      = $tbl_fname;
+                        $_SESSION['tbl_lname']      = $tbl_lname;
+                        $_SESSION['tbl_username']   = $tbl_username;
+                        $_SESSION['tbl_email']   = $tbl_email;
+                        $_SESSION['tbl_role']       = $tbl_role;
                     ?>
                     <tr>
                         <th scope="row"><?=$tbl_user_id?></th>

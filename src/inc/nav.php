@@ -1,12 +1,14 @@
 <?php
     session_start();
 
-    require ('./src/libs/connect.php');
+    require_once ('./src/libs/connect.php');
 
-    if (!isset($_SESSION['status'])) {
-        $login_btn = "login";
-    } else {
+    if ($_SESSION['role'] == 'admin') {
+        $login_btn = "admin";
+    } else if($_SESSION['role'] == 'user') {
         $login_btn = "logout";
+    } else {
+        $login_btn = "aoifghauighaeu";
     }
 ?>
 <header class="main-header">

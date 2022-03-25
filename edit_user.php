@@ -20,27 +20,27 @@
     <form action="./src/libs/authenticate.php" method="post">
         <h1>Edit User</h1>
         <div>
-            <input type="text" name="user_id" id="user_id" value="<?=$_SESSION['user_id']?>" hidden>
+            <input type="text" name="user_id" id="user_id" value="<?=$_SESSION['tbl_user_id']?>" hidden>
         </div>
         <div>
             <label for="fname">First name:</label>
-            <input type="text" name="fname" id="fname" value="<?=$_SESSION['fname']?>">
+            <input type="text" name="fname" id="fname" value="<?=$_SESSION['tbl_fname']?>">
         </div>
         <div>
             <label for="lname">Last name:</label>
-            <input type="text" name="lname" id="lname" value="<?=$_SESSION['lname']?>">
+            <input type="text" name="lname" id="lname" value="<?=$_SESSION['tbl_lname']?>">
         </div>
         <div>
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username" value="<?=$_SESSION['username']?>">
+            <input type="text" name="username" id="username" value="<?=$_SESSION['tbl_username']?>">
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" value="<?=$_SESSION['email']?>">
+            <input type="email" name="email" id="email" value="<?=$_SESSION['tbl_email']?>">
         </div>
         <div>
             <label for="role">Role:</label>
-            <input type="text" name="role" id="role" value="<?=$_SESSION['role']?>">
+            <input type="text" name="role" id="role" value="<?=$_SESSION['tbl_role']?>">
         </div>
         <button type="submit" name="update">Update</button>
     </form>

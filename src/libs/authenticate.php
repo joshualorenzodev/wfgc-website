@@ -35,7 +35,6 @@
             $_SESSION['role']       = $db_role;
             $_SESSION['status']     = $db_status;
             
-            
             $query = "UPDATE `users` SET acc_status = :acc_status WHERE `user_id` = :id";
             $statement = $db->prepare($query);
             $statement->bindValue(':acc_status', 'online', PDO::PARAM_STR);        
