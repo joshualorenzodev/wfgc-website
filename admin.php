@@ -69,7 +69,7 @@
                             <td><?=$tbl_registratin_date?></td>
                             <td><a href="edit_user.php?id=<?=$row['user_id']?>" class="btn btn-success">Edit</a></td>
                             <!-- <td><button class="btn btn-danger" name="delete_user">Delete</a</td> -->
-                            <td><a href="delete_user.php" class="btn btn-danger">Delete</a</td>
+                            <td><a href="delete_user.php?id=<?=$row['user_id']?>" class="btn btn-danger">Delete</a</td>
                         </form>
                     </tr>
                 <?php endwhile ?>
