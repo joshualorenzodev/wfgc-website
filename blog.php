@@ -3,14 +3,14 @@
 
     // SQL is written as a String.
     $query =    "SELECT p.post_id, 
-                    u.fname, 
-                    u.lname,
+                    concat(u.fname,' ',u.lname) AS 'full_name',
                     p.post_title,
+                    c.category_title,
                     p.post_content,
                     p.post_image_id,
                     p.post_publish_date
-                FROM `post` AS p
-                INNER JOIN users AS u ON p.post_author_id = u.user_id
+                FROM `post` p, `users` u, `category` c
+                WHERE p.post_author_id = u.user_id AND p.post_category_id = c.category_id
                 ORDER BY `post_publish_date` DESC";
 
     // A PDO::Statement is prepared from the query.
@@ -34,9 +34,9 @@
                 <?php
                     $post_id = $row['post_id'];
                     $post_title = $row['post_title'];
-                    $post_author = $row['fname'] . " " . $row['lname'];
+                    $post_author = $row['full_name'];
                     $post_content = $row['post_content'];
-                    $post_category = $row['post_category'];
+                    $post_category = $row['category_title'];
                     $post_image_id = $row['post_image_id'];
                     $post_publish_date = date( "M d, Y g:i:s A", strtotime($row['post_publish_date']));
                 ?>
@@ -49,6 +49,7 @@
                     by <a href="index.php"><?= $post_author?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?= $post_publish_date?></p>
+                <a href="search.php?category=<?= $post_category ?>"?>#<?= $post_category ?></a>
                 <hr>
                 <img class="img-responsive" src="./assets/post/<?=$post_image_id?>" alt="">
                 <hr>
@@ -57,13 +58,11 @@
                             <?=substr($post_content, 0, 300) . '...'?>
                             <!-- <a href="show.php?id=<?=$post['id']?>">Read More</a> -->
                             <br>
-                            <a class="btn btn-primary" href="view_post.php?post_id=<?= $post_id ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                            <a class="btn btn-primary mt-2" href="view_post.php?post_id=<?= $post_id ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
                         <?php else: ?>
                             <p><?= $post_content?></p>
                 <?php endif ?>
                 <hr>
-                <a href=""><?= $post</a>
-
             <?php endwhile ?>
         </div>
 
@@ -86,7 +85,7 @@
 
             <!-- Blog Categories Well -->
             <div class="well">
-                <h4>Blog Categories</h4>
+                <h4 class="mt-3">Blog Categories</h4>
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
@@ -96,12 +95,10 @@
                             </li>
                             <li><a href="#">Category Name</a>
                             </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
                         </ul>
                     </div>
                     <!-- /.col-lg-6 -->
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                         <ul class="list-unstyled">
                             <li><a href="#">Category Name</a>
                             </li>
@@ -112,7 +109,7 @@
                             <li><a href="#">Category Name</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                     <!-- /.col-lg-6 -->
                 </div>
                 <!-- /.row -->

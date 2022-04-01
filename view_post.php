@@ -57,11 +57,14 @@
 
     <?php if(isset($_SESSION['userid']) && isset($_SESSION['role'])) :?>
         <?php if($post['post_author_id'] == $_SESSION['userid'] || $_SESSION['role'] == 'admin'  ) :?>
-            <form action="post_authentication.php" method="get">
-                <a class="btn btn-primary" name="edit_post" href="edit_post.php?post_id=<?= $post['post_id'] ?>">Edit</a>
-                <a class="btn btn-danger" name="delete_post" href="delete_post.php?post_id=<?= $post['post_id'] ?>">Delete</a>
+                <a href="edit_post.php?post_id=<?= $post['post_id'] ?>">
+                    <button class="btn btn-primary" name="edit_post" >Edit</button>
+                </a>
+
+                <a href="delete_post.php?post_id=<?= $post['post_id'] ?>">
+                    <button class="btn btn-danger" name="delete_post" >Delete</button>
+                </a>
                 <?php endif ?>
-            </form>
     <?php endif ?>
 
 
