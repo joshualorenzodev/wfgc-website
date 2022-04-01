@@ -1,24 +1,65 @@
 <?php
     include_once("./src/libs/connect.php");
 
-    // SQL is written as a String.
-    $query =    "SELECT p.post_id, 
-                    concat(u.fname,' ',u.lname) AS 'full_name',
-                    p.post_title,
-                    c.category_title,
-                    p.post_content,
-                    p.post_image_id,
-                    p.post_publish_date
+    if(isset($_GET['category_id'])) {
+        
+        $query = "SELECT p.post_id, 
+                        concat(u.fname,' ',u.lname) AS 'full_name',
+                        p.post_title,
+                        c.category_title,
+                        p.post_content,
+                        p.post_image_id,
+                        p.post_publish_date
+                    FROM `post` p, `users` u, `category` c
+                    WHERE p.post_author_id = u.user_id AND 
+                        p.post_category_id = c.category_id AND
+                        p.post_category_id = :post_category_id
+                    ORDER BY `post_publish_date` DESC";
+        $statement = $db->prepare($query);
+        $post_category_id = filter_input(INPUT_GET, 'category_id', FILTER_SANITIZE_NUMBER_INT);
+        $statement->bindValue(':post_category_id', $post_category_id, PDO::PARAM_INT);
+    } else if (isset($_GET['search_query'])) {
+        $query = "SELECT p.post_id, 
+                        concat(u.fname,' ',u.lname) AS 'full_name',
+                        p.post_title,
+                        c.category_title,
+                        p.post_content,
+                        p.post_image_id,
+                        p.post_publish_date
                 FROM `post` p, `users` u, `category` c
-                WHERE p.post_author_id = u.user_id AND p.post_category_id = c.category_id
+                WHERE p.post_author_id = u.user_id AND 
+                    p.post_category_id = c.category_id AND
+                    
+                    p.post_title LIKE :search_query OR
+                    u.fname LIKE :search_query OR
+                    u.lname LIKE :search_query OR
+                    p.post_content LIKE :search_query OR
+                    c.category_title LIKE :search_query
                 ORDER BY `post_publish_date` DESC";
-
-    // A PDO::Statement is prepared from the query.
-    $statement = $db->prepare($query);
-
-    // Execution on the DB server is delayed until we execute().
+        $statement = $db->prepare($query);
+        $search_query = "%" . filter_input(INPUT_GET, 'search_query', FILTER_SANITIZE_FULL_SPECIAL_CHARS) . "%";
+        $statement->bindValue(':search_query', $search_query, PDO::PARAM_STR);
+    } else {
+        $query =    "SELECT p.post_id, 
+                        concat(u.fname,' ',u.lname) AS 'full_name',
+                        p.post_title,
+                        c.category_title,
+                        p.post_content,
+                        p.post_image_id,
+                        p.post_publish_date
+                    FROM `post` p, `users` u, `category` c
+                    WHERE p.post_author_id = u.user_id AND 
+                          p.post_category_id = c.category_id
+                    ORDER BY `post_publish_date` DESC";
+        $statement = $db->prepare($query);
+    }
+    
     $statement->execute();
 
+
+    $category_query = "SELECT * FROM `category`";
+    $category_statement = $db->prepare($category_query);
+    $category_statement->execute();
 ?>
 
 
@@ -73,12 +114,10 @@
             <div class="well">
                 <h4>Blog Search</h4>
                 <div class="input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
+                    <form action="blog.php" method="GET">
+                        <input type="text" name="search_query" class="form-control">
+                        <button class="btn btn-dark" type="submit">Search</button>
+                    </form>
                 </div>
                 <!-- /.input-group -->
             </div>
@@ -89,12 +128,9 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
+                            <?php while ($row = $category_statement->fetch() ) :?>
+                                <li><a href="blog.php?category_id=<?= $row['category_id'] ?>">#<?= $row['category_title'] ?></a></li>
+                            <?php endwhile ?>
                         </ul>
                     </div>
                     <!-- /.col-lg-6 -->
@@ -122,7 +158,7 @@
                     laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
             </div> -->
 
-            <a class="btn btn-success" href="add_post.php">Create Post <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="btn btn-success" href="add_post.php">Create Post</a>
         </div>
     </div>
     <hr>

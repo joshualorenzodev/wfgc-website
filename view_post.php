@@ -15,20 +15,10 @@
                     INNER JOIN users AS u ON p.post_id = :post_id
                     LIMIT 1";
 
-        // A PDO::Statement is prepared from the query.
         $statement = $db->prepare($query);
-    
-        // Sanitize $_GET['id'] to ensure it's a number.
         $post_id = filter_input(INPUT_GET, 'post_id', FILTER_SANITIZE_NUMBER_INT);
-    
-        // Bind the :id parameter in the query to the sanitized
-        // $id specifying a binding-type of Integer.
         $statement->bindValue(':post_id', $post_id, PDO::PARAM_INT);
-    
-        // Execution on the DB server is delayed until we execute().
         $statement->execute(); 
-    
-        // Fetch the post selected by primary key id.
         $post = $statement->fetch();
         
 ?>
@@ -57,13 +47,8 @@
 
     <?php if(isset($_SESSION['userid']) && isset($_SESSION['role'])) :?>
         <?php if($post['post_author_id'] == $_SESSION['userid'] || $_SESSION['role'] == 'admin'  ) :?>
-                <a href="edit_post.php?post_id=<?= $post['post_id'] ?>">
-                    <button class="btn btn-primary" name="edit_post" >Edit</button>
-                </a>
-
-                <a href="delete_post.php?post_id=<?= $post['post_id'] ?>">
-                    <button class="btn btn-danger" name="delete_post" >Delete</button>
-                </a>
+                <a href="edit_post.php?post_id=<?= $post['post_id'] ?>" class="btn btn-primary">Edit</a>
+                <a href="delete_post.php?post_id=<?= $post['post_id'] ?>" class="btn btn-danger">Delete</a>
                 <?php endif ?>
     <?php endif ?>
 
