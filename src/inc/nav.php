@@ -21,7 +21,7 @@
         <ul class="nav-bar">
             <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
             <li class="nav-item"><a href="ministries.php" class="nav-link">Ministries</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Sermon</a></li>
+            <li class="nav-item"><a href="blog.php" class="nav-link">Sermon</a></li>
             <li class="nav-item"><a href="give.php" class="nav-link">Give</a></li>
             <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
             <li class="nav-item"><a href="<?=$login_btn?>.php" class="nav-link"><?=ucwords($login_btn)?></a></li>

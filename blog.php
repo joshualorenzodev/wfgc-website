@@ -1,82 +1,70 @@
+<?php
+    include_once("./src/libs/connect.php");
+
+    // SQL is written as a String.
+    $query =    "SELECT p.post_id, 
+                    u.fname, 
+                    u.lname,
+                    p.post_title,
+                    p.post_content,
+                    p.post_image_id,
+                    p.post_publish_date
+                FROM `post` AS p
+                INNER JOIN users AS u ON p.post_author_id = u.user_id
+                ORDER BY `post_publish_date` DESC";
+
+    // A PDO::Statement is prepared from the query.
+    $statement = $db->prepare($query);
+
+    // Execution on the DB server is delayed until we execute().
+    $statement->execute();
+
+?>
+
+
 <?php include './src/inc/header.php'?>
 <?php include './src/inc/nav.php'?>
 
 <div class="container">
-
     <div class="row">
-
         <!-- Blog Entries Column -->
         <div class="col-md-8">
+            <!-- <h1 class="page-header">Page Heading <small>Secondary Text</small></h1> -->
+            <?php while($row = $statement->fetch()) : ?>
+                <?php
+                    $post_id = $row['post_id'];
+                    $post_title = $row['post_title'];
+                    $post_author = $row['fname'] . " " . $row['lname'];
+                    $post_content = $row['post_content'];
+                    $post_category = $row['post_category'];
+                    $post_image_id = $row['post_image_id'];
+                    $post_publish_date = date( "M d, Y g:i:s A", strtotime($row['post_publish_date']));
+                ?>
+                
+                <!-- First Blog Post -->
+                <h2>
+                    <a href="view_post.php?post_id=<?= $post_id ?>"><?= $post_title?></a>
+                </h2>
+                <p class="lead">
+                    by <a href="index.php"><?= $post_author?></a>
+                </p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on <?= $post_publish_date?></p>
+                <hr>
+                <img class="img-responsive" src="./assets/post/<?=$post_image_id?>" alt="">
+                <hr>
 
-            <h1 class="page-header">
-                Page Heading
-                <small>Secondary Text</small>
-            </h1>
+                <?php if(strlen($post_content) > 300): ?>
+                            <?=substr($post_content, 0, 300) . '...'?>
+                            <!-- <a href="show.php?id=<?=$post['id']?>">Read More</a> -->
+                            <br>
+                            <a class="btn btn-primary" href="view_post.php?post_id=<?= $post_id ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <?php else: ?>
+                            <p><?= $post_content?></p>
+                <?php endif ?>
+                <hr>
+                <a href=""><?= $post</a>
 
-            <!-- First Blog Post -->
-            <h2>
-                <a href="#">Blog Post Title</a>
-            </h2>
-            <p class="lead">
-                by <a href="index.php">Start Bootstrap</a>
-            </p>
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-            <hr>
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus
-                inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum
-                officiis rerum.</p>
-            <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-            <hr>
-
-            <!-- Second Blog Post -->
-            <h2>
-                <a href="#">Blog Post Title</a>
-            </h2>
-            <p class="lead">
-                by <a href="index.php">Start Bootstrap</a>
-            </p>
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-            <hr>
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, quasi, fugiat, asperiores harum
-                voluptatum tenetur a possimus nesciunt quod accusamus saepe tempora ipsam distinctio minima dolorum
-                perferendis labore impedit voluptates!</p>
-            <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-            <hr>
-
-            <!-- Third Blog Post -->
-            <h2>
-                <a href="#">Blog Post Title</a>
-            </h2>
-            <p class="lead">
-                by <a href="index.php">Start Bootstrap</a>
-            </p>
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-            <hr>
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, voluptates, voluptas dolore ipsam
-                cumque quam veniam accusantium laudantium adipisci architecto itaque dicta aperiam maiores provident id
-                incidunt autem. Magni, ratione.</p>
-            <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-            <hr>
-
-            <!-- Pager -->
-            <ul class="pager">
-                <li class="previous">
-                    <a href="#">&larr; Older</a>
-                </li>
-                <li class="next">
-                    <a href="#">Newer &rarr;</a>
-                </li>
-            </ul>
-
+            <?php endwhile ?>
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
@@ -131,14 +119,16 @@
             </div>
 
             <!-- Side Widget Well -->
-            <div class="well">
+            <!-- <div class="well">
                 <h4>Side Widget Well</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus
                     laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-            </div>
+            </div> -->
+
+            <a class="btn btn-success" href="add_post.php">Create Post <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
     <hr>
 </div>
-<?php include './src/inc/footer-section.php'?>
+<!-- <?php include './src/inc/footer-section.php'?> -->
 <?php include './src/inc/footer.php'?>
