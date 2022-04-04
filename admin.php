@@ -16,15 +16,30 @@
     // Execution on the DB server is delayed until we execute().
     $statement->execute(); 
 
+
+
+    // SQL is written as a String.
+    $category_query = "SELECT * FROM `category`";
+
+    // A PDO::Statement is prepared from the query.
+    $category_statement = $db->prepare($category_query);
+
+    // Execution on the DB server is delayed until we execute().
+    $category_statement->execute(); 
+
 ?>
 
 <?php include ('./src/inc/header.php') ?>
 
 <body>
-    <h1>Welcome to admin, <?=$_SESSION['fname']?></h1>
+    <div>
+        <h1>Welcome to admin, <?=$_SESSION['fname']?></h1>
+        <a href="logout.php"><button class="btn btn-warning">Logout</button></a>
+        <a href="index.php"><button class="btn btn-info">Home</button></a>
+    </div>
 
-    <a href="logout.php"><button class="btn btn-warning">Logout</button></a>
-    <a href="index.php"><button class="btn btn-info">Home</button></a>
+    <br>
+
     <a href="add_user.php"><button class="btn btn-primary">Add User</button></a>
 
     <div class="table-responsive">
@@ -68,7 +83,6 @@
                             <td><?=$tbl_role?></td>
                             <td><?=$tbl_registratin_date?></td>
                             <td><a href="edit_user.php?id=<?=$row['user_id']?>" class="btn btn-success">Edit</a></td>
-                            <!-- <td><button class="btn btn-danger" name="delete_user">Delete</a</td> -->
                             <td><a href="delete_user.php?id=<?=$row['user_id']?>" class="btn btn-danger">Delete</a</td>
                         </form>
                     </tr>
@@ -77,7 +91,32 @@
         </table>
     </div>
         
-        
+    <br>
+
+    <a href="add_category.php"><button class="btn btn-primary">Add Category</button></a>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle ">
+            <thead>
+                <tr>
+                    <th scope="col">Category Name</th>
+                    <th scope="col">Category ID</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while($row = $category_statement->fetch()): ?>
+                    <tr>
+                        <th scope="row"><?=$row['category_title']?></th>
+                        <td><?= $row['category_id'] ?></td>
+                        <td><a href="edit_category.php?category_id=<?=$row['category_id']?>" class="btn btn-success">Edit</a></td>
+                        <td><a href="delete_category.php?category_id=<?=$row['category_id']?>" class="btn btn-danger">Delete</a</td>
+                    </tr>
+                <?php endwhile ?>
+            </tbody>
+        </table>
+    </div>
         
     </body>
     
