@@ -34,6 +34,29 @@
         $comment_post_id = filter_input(INPUT_GET, 'post_id', FILTER_SANITIZE_NUMBER_INT);
         $comment_statement->bindValue(':comment_post_id', $comment_post_id, PDO::PARAM_INT);
         $comment_statement->execute(); 
+
+        if(isset($_GET['post_comment'])) {
+            $add_comment_query = "INSERT INTO `comments` (comment_post_id,
+                                                          comment_author_id,
+                                                          comment_content) VALUES
+                                                         (:comment_post_id,
+                                                          :comment_author_id,
+                                                          :comment_content)";
+            $add_comment_statement = $db->prepare($add_comment_query);
+    
+            $comment_author_id = filter_var($_SESSION['userid'], FILTER_SANITIZE_NUMBER_INT);
+            $comment_content = filter_input(INPUT_GET, 'comment_content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $comment_post_id = filter_input(INPUT_GET, 'post_id', FILTER_SANITIZE_NUMBER_INT);
+    
+            $add_comment_statement->bindValue(':comment_post_id', $comment_post_id, PDO::PARAM_INT);
+            $add_comment_statement->bindValue(':comment_author_id', $comment_author_id, PDO::PARAM_INT);
+            $add_comment_statement->bindValue(':comment_content', $comment_content, PDO::PARAM_STR);
+
+            $add_comment_statement->execute();
+
+            header("Location: view_post.php?post_id=$comment_post_id");
+        }
+
         
 ?>
 
@@ -83,17 +106,23 @@
             <hr>
         <?php endwhile ?>
     </div>
-
+    
+    
     <div class="comment-form">
-        <form id="algin-form">
+        <form method="GET" action="">
             <div class="form-group">
                 <h4>Leave a comment</h4> 
                 <label for="message">Message</label>
-                <textarea name="msg" id="" msg cols="30" rows="5" class="form-control"></textarea>
+                <input type="number" name="post_id" value="<?= $post['post_id'] ?>" hidden>
+                <textarea name="comment_content" id="" msg cols="30" rows="5" class="form-control"></textarea>
             </div>
-            <div class="form-group"> <label for="name">Name</label> <input type="text" name="name" id="fullname" class="form-control"> </div>
-            <div class="form-group"> <label for="email">Email</label> <input type="text" name="email" id="email" class="form-control"> </div>
-            <div class="form-group"> <button type="button" id="post" class="btn">Post Comment</button> </div>
+            <!-- <div class="form-group"> <label for="name">Name</label> <input type="text" name="comment_author" id="fullname" class="form-control"> </div>
+            <div class="form-group"> <label for="email">Email</label> <input type="text" name="comment_email" id="email" class="form-control"> </div> -->
+            <?php if (isset($_SESSION['userid'])) : ?>
+                <div class="form-group"> <button type="submit" name="post_comment">Post Comment</button> </div>
+                <?php else : ?>
+                    <a href="login.php">Login to comment</a>
+            <?php endif ?>
         </form>
     </div>
 
