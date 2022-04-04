@@ -24,6 +24,7 @@
 
 
         $comment_query = "SELECT cm.comment_content,
+                                 cm.comment_id,
                                  cm.comment_publish_date,
                                  concat(u.fname,' ',u.lname) AS 'comment_author'
                             FROM `comments` AS cm, `users` AS u
@@ -102,7 +103,15 @@
                 <p class="comment-content">
                     <?= $comment['comment_content'] ?>
                 </p>
+                <?php if(isset($_SESSION['userid']) && isset($_SESSION['role'])) :?>
+                    <?php if($post['post_author_id'] == $_SESSION['userid'] || $_SESSION['role'] == 'admin'  ) :?>
+                        <?php $_SESSION['previous_post'] = $comment_post_id ?>
+                        <a href="edit_comment.php?comment_id=<?= $comment['comment_id'] ?>" class="btn btn-primary">Edit</a>
+                        <a href="delete_comment.php?comment_id=<?= $comment['comment_id'] ?>" class="btn btn-danger">Delete</a>
+                <?php endif ?>
+            <?php endif ?>
             </div>
+
             <hr>
         <?php endwhile ?>
     </div>
@@ -116,8 +125,7 @@
                 <input type="number" name="post_id" value="<?= $post['post_id'] ?>" hidden>
                 <textarea name="comment_content" id="" msg cols="30" rows="5" class="form-control"></textarea>
             </div>
-            <!-- <div class="form-group"> <label for="name">Name</label> <input type="text" name="comment_author" id="fullname" class="form-control"> </div>
-            <div class="form-group"> <label for="email">Email</label> <input type="text" name="comment_email" id="email" class="form-control"> </div> -->
+ 
             <?php if (isset($_SESSION['userid'])) : ?>
                 <div class="form-group"> <button type="submit" name="post_comment">Post Comment</button> </div>
                 <?php else : ?>
