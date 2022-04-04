@@ -3,6 +3,8 @@
 
 ?>
 <?php include './src/inc/header.php'?>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0" nonce="rsMdeqFZ"></script>
 
     <div class="container-fluid">
         <div class="hero">
@@ -16,6 +18,7 @@
                         <a href="https://www.google.com/maps/place/898+Henderson+Hwy,+Winnipeg,+MB+R2K+3T4/@49.9327396,-97.1020901,17z/data=!3m1!4b1!4m5!3m4!1s0x52ea7051826fd54d:0xc8be4e8781a71579!8m2!3d49.9327362!4d-97.0999014" class="hero-btn" target="_blank">Directions</a>
                         <a href="https://www.facebook.com/bethel.churchwinnipeg/" class="hero-btn" target="_blank">Livestream</a>
                     </div>
+                    <div class="fb-video mt-5" data-href="https://www.facebook.com/bethel.churchwinnipeg/live" data-width="1000" data-show-text="false" data-show-captions="true" data-allowfullscreen="false"></div>
                 </div>
             </div>
         </div>
