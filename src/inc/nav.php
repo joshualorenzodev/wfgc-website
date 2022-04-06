@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     require_once ('./src/libs/connect.php');
 
     if(!isset($_SESSION['role'])) {

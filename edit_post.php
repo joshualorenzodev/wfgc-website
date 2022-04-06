@@ -11,6 +11,12 @@
 
     $statement->execute();
     $row = $statement->fetch();
+
+
+	$category_query = "SELECT * FROM `category`";
+    $category_statement = $db->prepare($category_query);
+    $category_statement->execute();
+
 ?>
 
 
@@ -48,10 +54,9 @@
 
 				<div class="form-group">
 					<select class="form-select" name="post_category_id" aria-label="Category" required>
-						<option selected disabled>Category</option>
-						<option value="1"<?= $row['post_category_id'] == 1 ? 'selected' : '' ?>>Faith</option>
-						<option value="2"<?= $row['post_category_id'] == 2 ? 'selected' : '' ?>>Love</option>
-						<option value="3"<?= $row['post_category_id'] == 3 ? 'selected' : '' ?>>Peace</option>
+                        <?php while($category = $category_statement->fetch()): ?>
+                            <option value="<?= $category['category_id'] ?>" <?= $category['category_id'] == $row['post_category_id'] ? 'selected' : null ?>><?= $category['category_title'] ?></option>
+                        <?php endwhile ?>					
 					</select>
 				</div>
     		    
