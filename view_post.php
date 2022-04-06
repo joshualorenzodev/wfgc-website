@@ -36,26 +36,41 @@
         $comment_statement->bindValue(':comment_post_id', $comment_post_id, PDO::PARAM_INT);
         $comment_statement->execute(); 
 
-        if(isset($_GET['post_comment'])) {
-            $add_comment_query = "INSERT INTO `comments` (comment_post_id,
-                                                          comment_author_id,
-                                                          comment_content) VALUES
-                                                         (:comment_post_id,
-                                                          :comment_author_id,
-                                                          :comment_content)";
-            $add_comment_statement = $db->prepare($add_comment_query);
-    
-            $comment_author_id = filter_var($_SESSION['userid'], FILTER_SANITIZE_NUMBER_INT);
-            $comment_content = filter_input(INPUT_GET, 'comment_content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $comment_post_id = filter_input(INPUT_GET, 'post_id', FILTER_SANITIZE_NUMBER_INT);
-    
-            $add_comment_statement->bindValue(':comment_post_id', $comment_post_id, PDO::PARAM_INT);
-            $add_comment_statement->bindValue(':comment_author_id', $comment_author_id, PDO::PARAM_INT);
-            $add_comment_statement->bindValue(':comment_content', $comment_content, PDO::PARAM_STR);
+        $captcha_error = "";
 
-            $add_comment_statement->execute();
+        $comment_captcha = filter_input(INPUT_POST, 'captcha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            header("Location: view_post.php?post_id=$comment_post_id");
+        if(isset($_POST['post_comment'])) {
+            $_SESSION['comment_content'] = $_POST['comment_content'];
+
+            if(empty($comment_captcha)) {
+                $captcha_error = "Please enter the captcha";
+            } else if ($_SESSION['CAPTCHA_CODE'] == $comment_captcha) {
+                $captcha_error = "Correct";
+                $add_comment_query = "INSERT INTO `comments` (comment_post_id,
+                                                            comment_author_id,
+                                                            comment_content) VALUES
+                                                            (:comment_post_id,
+                                                            :comment_author_id,
+                                                            :comment_content)";
+                $add_comment_statement = $db->prepare($add_comment_query);
+        
+                $comment_author_id = filter_var($_SESSION['userid'], FILTER_SANITIZE_NUMBER_INT);
+                $comment_content = filter_input(INPUT_POST, 'comment_content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $comment_post_id = filter_input(INPUT_POST, 'post_id', FILTER_SANITIZE_NUMBER_INT);
+        
+                $add_comment_statement->bindValue(':comment_post_id', $comment_post_id, PDO::PARAM_INT);
+                $add_comment_statement->bindValue(':comment_author_id', $comment_author_id, PDO::PARAM_INT);
+                $add_comment_statement->bindValue(':comment_content', $comment_content, PDO::PARAM_STR);
+                $add_comment_statement->execute();
+                unset($_SESSION['comment_content']);
+                header("Location: view_post.php?post_id=$comment_post_id");
+            } else if ($_SESSION['CAPTCHA_CODE'] != $comment_captcha) {
+                $captcha_error = "Captcha is incorrect. Try again. ";
+            } 
+            else {
+                $captcha_error = "Error validating the captcha";
+            }
         }
 
         
@@ -118,12 +133,15 @@
     
     
     <div class="comment-form">
-        <form method="GET" action="">
+        <form method="POST" action="">
             <div class="form-group">
                 <h4>Leave a comment</h4> 
                 <label for="message">Message</label>
                 <input type="number" name="post_id" value="<?= $post['post_id'] ?>" hidden>
-                <textarea name="comment_content" id="" msg cols="30" rows="5" class="form-control"></textarea>
+                <textarea name="comment_content" cols="30" rows="5" class="form-control"><?= isset($_SESSION['comment_content']) ? $_SESSION['comment_content'] : null ?> </textarea>
+                <p for="captcha"><?= $captcha_error ?></p>
+                <img src="captcha.php" alt="Captcha"><br>
+                <input type="text" name="captcha" id="captcha">
             </div>
  
             <?php if (isset($_SESSION['userid'])) : ?>
