@@ -56,8 +56,16 @@
 				</div>
     		    
 				<div class="form-group">
-					<label for='post_image'>Post image <span class="require">*</label>
+					<label for='post_image'>Replace image</label>
 					<input type='file' name='post_image' id='post_image' >
+				</div>
+
+				<div class="form-group">
+					<?php if(!empty($row['post_image_id'])): ?>
+						<input type="text" name="image_filename" value="<?= $row['post_image_id'] ?>" hidden>
+						<input type="checkbox" name="delete_image">
+						<label for='delete_image'>Delete image instead</label>
+					<?php endif ?>
 				</div>
 
     		    <div class="form-group">

@@ -12,6 +12,7 @@
     $category_statement->execute();
 
 
+
     
 ?>
 
@@ -33,7 +34,7 @@
     		        <label for="slug">Slug <span class="require">*</span> <small>(This field use in url path.)</small></label>
     		        <input type="text" class="form-control" name="slug" />
     		        <span class="help-block">Field not entered!</span>
-    		    </div>
+    		    </div>2
     		     -->
                  
     		    <div class="form-group">
@@ -48,7 +49,7 @@
 
 				<div class="form-group">
 					<select class="form-select" name="category" aria-label="Category" required>
-						<option selected>Category</option>
+						<option selected disabled>Category</option>
                         <?php while($row = $category_statement->fetch()): ?>
                             <option value="<?= $row['category_id'] ?>"><?= $row['category_title'] ?></option>
                         <?php endwhile ?>
